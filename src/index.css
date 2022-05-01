@@ -54,5 +54,11 @@ body {
  }
 
  .info h3 {
-  font-size: 1rem;
+    font-size: 1rem;
+ }
+
+ .notFound {
+    color: #f00;
+    margin-top: 16px;
+    margin-bottom: 0;
  }

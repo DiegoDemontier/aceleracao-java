@@ -6,12 +6,10 @@ import { Button, MenuItem } from '@mui/material';
 export default function BasicTextFields({ setUser, setType }) {
   const [currency, setCurrency] = React.useState('todos');
   const [name, setName] = React.useState('');
-  const [on, setOn] = React.useState(true);
 
   const handleClick = () => {
     setUser(name);
     setType(currency);
-    setOn(false);
   }
 
   const currencies = [
@@ -44,7 +42,6 @@ export default function BasicTextFields({ setUser, setType }) {
           id="outlined-select-currency"
           select
           label="Selecionar tipo"
-          disabled={ true && on }
           value={currency}
           onChange={(e) => {setCurrency(e.target.value)}}
         >

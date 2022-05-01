@@ -9,6 +9,8 @@ function App() {
   const [user, setUser] = React.useState([]);
   const [type, setType] = React.useState([]);
   const [data, setData] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
+
 
   React.useEffect(() => {
     const requestStudent = async () => {
@@ -18,14 +20,24 @@ function App() {
         .catch((err) => {
           return [];
         });
-        setData(request)
-    };
+        if (request.length > 0) {
+          const res = request.filter(element => element.exercicios.length > 0);
+          if (res.length === 0) {
+            setOpen(true);
+            return setData([])
+          }
+        }
+        setOpen(false);
+        setData(request);
+      };
     requestStudent();
   }, [user]);
 
   return (
     <div className="container">
-      <Header />
+      <Header
+        open={open}
+      />
       <Form
         setUser={setUser}
         setType={setType}
