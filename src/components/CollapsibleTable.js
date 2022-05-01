@@ -19,7 +19,7 @@ export default function CollapsibleTable({ data, type }) {
       setNewData(data);
       setTotal(data.reduce((acc, curr) => acc + curr.total ,0));
       data.forEach(row => {
-        count += row.exercicios.filter(exercicio => exercicio.porcent > 80).length
+        count += row.exercicios.filter(exercicio => exercicio.porcent >= 80).length
       });
       setCompleted(count);
     } else if (type !== 'todos') {
@@ -29,7 +29,7 @@ export default function CollapsibleTable({ data, type }) {
         setTotal(filteredData.reduce((acc, curr) => acc + curr.total ,0));
 
         data.filter(element => element.tipo === type).forEach(row => {
-          count += row.exercicios.filter(exercicio => exercicio.porcent > 80).length
+          count += row.exercicios.filter(exercicio => exercicio.porcent >= 80).length
         });
         setCompleted(count);
     };
@@ -39,7 +39,7 @@ export default function CollapsibleTable({ data, type }) {
     <TableContainer component={Paper}>
       <div className="info">
         <h3>Total de desafios: {total}</h3>
-        <h3>Total acima de 80%: {completed}</h3>
+        <h3>Total com score igual ou maior que 80%: {completed}</h3>
       </div>
       <Table aria-label="collapsible table">
         <TableHead>
@@ -47,8 +47,8 @@ export default function CollapsibleTable({ data, type }) {
             <TableCell />
             <TableCell>Desafio</TableCell>
             <TableCell>Tipo</TableCell>
-            <TableCell align="right">Quantidade de exercícios</TableCell>
-            <TableCell align="right">Quantidade acima de 80%</TableCell>
+            <TableCell align="right">Total de exercícios</TableCell>
+            <TableCell align="right">Total concluídos</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

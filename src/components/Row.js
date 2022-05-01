@@ -5,7 +5,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 export default function Row({ row, setQuantity }) {
   const [open, setOpen] = React.useState(false);
-  const exercisesDone = row.exercicios.filter(exercicio => exercicio.porcent > 80)
+  const exercisesDone = row.exercicios.filter(exercicio => exercicio.porcent >= 80)
 
   return (
     <React.Fragment>
@@ -60,7 +60,7 @@ export default function Row({ row, setQuantity }) {
                       </TableCell>
                       <TableCell>{historyRow.porcent + '%'}</TableCell>
                       <TableCell align="right">
-                        {historyRow.porcent > 80 ? 'Aprovado' : 'Reprovado'}
+                        {historyRow.porcent >= 80 ? 'Aprovado' : 'Reprovado'}
                       </TableCell>
                     </TableRow>
                   ))}
