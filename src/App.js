@@ -15,7 +15,9 @@ function App() {
       const request = await axios
         .get(`https://aceleracaoapi.diegodemontier.repl.co/${user}`)
         .then((res) => res.data)
-        .catch((err) => err.response);
+        .catch((err) => {
+          return [];
+        });
         setData(request)
     };
     requestStudent();
