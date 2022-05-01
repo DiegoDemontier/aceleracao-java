@@ -3,15 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button, MenuItem } from '@mui/material';
 
-export default function BasicTextFields({ setUser, setType }) {
-  const [currency, setCurrency] = React.useState('todos');
-  const [name, setName] = React.useState('');
-
-  const handleClick = () => {
-    setUser(name);
-    setType(currency);
-  }
-
+export default function BasicTextFields({ setUser, setType, type, requestStudent }) {
   const currencies = [
     { value: 'todos', label: 'Todos' },
     { value: 'Exercício', label: 'Exercício' },
@@ -35,15 +27,15 @@ export default function BasicTextFields({ setUser, setType }) {
         id="outlined-basic"
         label="Usuário do GitHub"
         variant="outlined"
-        onChange={(e) => {setName(e.target.value)}}
+        onChange={(e) => {setUser(e.target.value)}}
       />
 
       <TextField
           id="outlined-select-currency"
           select
           label="Selecionar tipo"
-          value={currency}
-          onChange={(e) => {setCurrency(e.target.value)}}
+          value={type}
+          onChange={(e) => {setType(e.target.value)}}
         >
           {currencies.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -53,7 +45,7 @@ export default function BasicTextFields({ setUser, setType }) {
         </TextField>
         <Button
           variant="contained"
-          onClick={handleClick}
+          onClick={requestStudent}
         >
           Pesquisar
         </Button>
